@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hello World</title>
+    <url>/2024/01/25/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<span id="more"></span>
+
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>使用hexo遇见的问题（1）｜安装</title>
+    <url>/2024/01/26/%E4%BD%BF%E7%94%A8hexo%E9%81%87%E8%A7%81%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%881%EF%BC%89%EF%BD%9C%20%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<p>本人梳理了一下安装hexo会遇见的问题一般会有以下的几个：</p>
+<ol>
+<li>底层依赖问题</li>
+<li>npm镜像源配置问题</li>
+<li>github连接问题</li>
+<li>主题切换问题</li>
+</ol>
+<span id="more"></span>
+
+<h3 id="一、底层依赖问题"><a href="#一、底层依赖问题" class="headerlink" title="一、底层依赖问题"></a>一、底层依赖问题</h3><p>hexo是基于node.js开发而成的快速、简洁且高效的博客框架。电脑环境中需要提前安装好node.js。以下是2024年1月26日本人在<a href="https://hexo.io/zh-cn/docs/">说明文档</a>中查找出的版本推荐：</p>
+<table>
+<thead>
+<tr>
+<th align="center">Hexo 版本</th>
+<th align="center">最低版本 (Node.js 版本)</th>
+<th align="left">最高版本 (Node.js 版本)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">7.0+</td>
+<td align="center">14.0.0</td>
+<td align="left">latest</td>
+</tr>
+<tr>
+<td align="center">6.2+</td>
+<td align="center">12.13.0</td>
+<td align="left">latest</td>
+</tr>
+<tr>
+<td align="center">6.0+</td>
+<td align="center">12.13.0</td>
+<td align="left">18.5.0</td>
+</tr>
+<tr>
+<td align="center">5.0+</td>
+<td align="center">10.13.0</td>
+<td align="left">12.0.0</td>
+</tr>
+<tr>
+<td align="center">4.1 - 4.2</td>
+<td align="center">8.10</td>
+<td align="left">10.0.0</td>
+</tr>
+<tr>
+<td align="center">4.0</td>
+<td align="center">8.6</td>
+<td align="left">8.10.0</td>
+</tr>
+<tr>
+<td align="center">3.3 - 3.9</td>
+<td align="center">6.9</td>
+<td align="left">8.0.0</td>
+</tr>
+<tr>
+<td align="center">3.2 - 3.3</td>
+<td align="center">0.12</td>
+<td align="left">未知</td>
+</tr>
+<tr>
+<td align="center">3.0 - 3.1</td>
+<td align="center">0.10 或 iojs</td>
+<td align="left">未知</td>
+</tr>
+<tr>
+<td align="center">0.0.1 - 2.8</td>
+<td align="center">0.10</td>
+<td align="left">未知</td>
+</tr>
+</tbody></table>
+<p>没有安装node.js的小伙伴提前官方的 <a href="https://nodejs.org/zh-cn/download/">node下载地址</a>下载安装你想要的node.js版本。</p>
+<p>检查电脑环境中的node.js版本。Mac、Win、Linux电脑都是在命令行工具中使用命令<code>node -v</code>查看电脑node.js版本，以下是Mac电脑实例：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">node -v</span><br><span class="line">v16.20.0</span><br></pre></td></tr></table></figure>
+
+<p>安装好node.js之后，即可使用 npm 安装&#x3D;&#x3D;hexo&#x3D;&#x3D;安装前选择一个文件夹<code>hexo-site</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<p>如果安装顺利，即可完成hexo的安装。</p>
+<p>按照以上步骤避免了很多莫名其妙的依赖性错误坑，例如</p>
+<ul>
+<li>电脑环境低版本的node.js安装了高版本的hexo</li>
+<li>电脑环境高版本的node.js安装了低版本的hexo</li>
+</ul>
+<p>这两种都不能顺利的完成hexo安装。即使安装了也会出现控制不了的意外事件的发生。</p>
+<h3 id="二、npm镜像源配置问题"><a href="#二、npm镜像源配置问题" class="headerlink" title="二、npm镜像源配置问题"></a>二、npm镜像源配置问题</h3><p>大部分国内小伙伴在使用 npm 安装&#x3D;&#x3D;hexo&#x3D;&#x3D;时，会发现安装下载极慢，尝试很多次依然失败，更换下载源即可完成下载。</p>
+<h4 id="1-临时使用"><a href="#1-临时使用" class="headerlink" title="1. 临时使用"></a><strong>1. 临时使用</strong></h4><p>如果只是一次性使用，可以使用下面的命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">npm --registry https://registry.npmmirror.com install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-全局配置"><a href="#2-全局配置" class="headerlink" title="2. 全局配置"></a>2. 全局配置</h4><p>这种设置是全局的，以后每次都会自动读取已经设置好的源</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 查询源</span><br><span class="line">npm config get registry</span><br><span class="line">// 更换国内源</span><br><span class="line">npm config set registry https://registry.npmmirror.com</span><br><span class="line">// 恢复官方源</span><br><span class="line">npm config set registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>
+
+<p>再次,即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cd hexo-site</span><br><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="三、github连接问题"><a href="#三、github连接问题" class="headerlink" title="三、github连接问题"></a>三、github连接问题</h3><h4 id="3-1-安装git"><a href="#3-1-安装git" class="headerlink" title="3.1 安装git"></a>3.1 安装git</h4><p>请在<a href="https://git-scm.com/download/">官网</a>下载并安装git。</p>
+<p><img src="/images/image-20240126233359331.png" alt="image-20240126233359331"></p>
+<h4 id="3-2-配置github"><a href="#3-2-配置github" class="headerlink" title="3.2 配置github"></a>3.2 配置github</h4><p>没有github账户，请前往官网注册。</p>
+<h5 id="3-2-1-在-Github-上创建仓库"><a href="#3-2-1-在-Github-上创建仓库" class="headerlink" title="3.2.1 在 Github 上创建仓库"></a>3.2.1 在 Github 上创建仓库</h5><ul>
+<li>新建一个名为: <a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a> 的仓库(username 为您的 Github 用户名)</li>
+<li>比如，如果您的 github 用户名是 test，那么您就新建名为 <a href="https://link.zhihu.com/?target=http://test.github.io">http://test.github.io</a> 的仓库（必须是您的用户名，其它名称无效），将来你的网站访问地址就是 <a href="https://link.zhihu.com/?target=https://test.github.io/">https://test.github.io</a> 了。由此可见，每一个 github 账户最多只能创建一个这样可以直接使用域名访问的仓库</li>
+<li>注意事项:<br>注册的邮箱一定要验证，否则不会成功;<br>仓库名字必须是：<a href="https://link.zhihu.com/?target=http://username.github.io">http://username.github.io</a>，其中 username 是你的用户名;<br>仓库创建成功不会立即生效，需要过一段时间，大概10-30分钟，或者更久</li>
+</ul>
+<h5 id="3-2-2-配置-SSH-免密登录"><a href="#3-2-2-配置-SSH-免密登录" class="headerlink" title="3.2.2 配置 SSH 免密登录"></a>3.2.2 配置 SSH 免密登录</h5><p>为什么要配置这个呢？因为您提交代码肯定要拥有您的 github 权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用 ssh key 来解决本地和服务器的连接问题。具体设置方式信息和步骤搜索网络教程，在此不再赘述。</p>
+<p><strong>注:</strong> 如果您已经配置过 SSH，可跳过此步骤</p>
+<h5 id="3-2-3-测试连通性"><a href="#3-2-3-测试连通性" class="headerlink" title="3.2.3 测试连通性"></a>3.2.3 测试连通性</h5><p>使用git配置github完成后，测试连通性。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-2-4-配置git-用户和邮箱"><a href="#3-2-4-配置git-用户和邮箱" class="headerlink" title="3.2.4 配置git 用户和邮箱"></a>3.2.4 配置git 用户和邮箱</h5><p>命令: <code>git config --global user.name &quot;your Github username&quot;</code> &#x2F;&#x2F; 注意是 username, 而非昵称</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;your Github username</span><br></pre></td></tr></table></figure>
+
+<p>命令: <code>git config --global user.email &quot;xxx@qq.com&quot;</code> &#x2F;&#x2F; 填写您的 github 注册邮箱</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.email &quot;xxx@qq.com&quot;</span><br></pre></td></tr></table></figure>
+
+<p>查看git配置信息<code>git config -l </code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config -l</span><br><span class="line">credential.helper=osxkeychain</span><br><span class="line">init.defaultbranch=main</span><br><span class="line">user.name=your username  //此处会展示你的设置用户名</span><br><span class="line">user.email=your email address  //此处会展示你设置的邮箱</span><br></pre></td></tr></table></figure>
+
+<p>至此，您已经成功配置好了 Github。</p>
+<p>git配置好后，国内用户都会遇见访问github速度较慢或者无法访问问题。解决git无法连接<a href="https://so.csdn.net/so/search?q=gitHub&spm=1001.2101.3001.7020">gitHub</a>问题</p>
+<h4 id="3-3-使用代理工具"><a href="#3-3-使用代理工具" class="headerlink" title="3.3 使用代理工具"></a>3.3 使用代理工具</h4><p>有时候我们用代理工具，但git 依然无法pull，无法push，无法clone的问题。分析原因</p>
+<p>从github上拉取某个仓库的代码，有HTTPS和SSH两种模式。</p>
+<h5 id="3-3-1-HTTPS模式无法连接远程仓库"><a href="#3-3-1-HTTPS模式无法连接远程仓库" class="headerlink" title="3.3.1 HTTPS模式无法连接远程仓库"></a>3.3.1 HTTPS模式无法连接远程仓库</h5><ol>
+<li>报错 “Failed to connect to github.com port 443”</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/PaddlePaddle/PaddleOCR.git</span><br><span class="line">Cloning into ‘Messaging’… </span><br><span class="line">fatal: unable to access ‘https://github.com/PaddlePaddle/PaddleOCR.git‘: Failed to connect to github.com port 443: Timed out</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>配置http代理</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global http.proxy 127.0.0.1:7890</span><br><span class="line">git config --global https.proxy 127.0.0.1:7890</span><br></pre></td></tr></table></figure>
+
+<p><strong>注：</strong>7890是端口号，要看自己电脑proxy software的端口号</p>
+<ol start="3">
+<li>查看代理命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global --get http.proxy</span><br><span class="line">git config --global --get https.proxy</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>取消代理命令</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<h5 id="3-3-2-SSH模式无法连接远程仓库"><a href="#3-3-2-SSH模式无法连接远程仓库" class="headerlink" title="3.3.2 SSH模式无法连接远程仓库"></a>3.3.2 SSH模式无法连接远程仓库</h5><ol>
+<li>报错 ssh: connect to host github.com port 22</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone git@github.com:PaddlePaddle/PaddleOCR.git </span><br><span class="line">Cloning into ...</span><br><span class="line">ssh: connect to host github.com port 22: Operation timed out</span><br><span class="line">fatal: Could not read from remote repository.</span><br></pre></td></tr></table></figure>
+
+<p>经过git配置代理后，我的HTTPS模式已经可用了，但是SSH模式依然不行。</p>
+<p>采用了<a href="https://help.github.com/en/github/authenticating-to-github/using-ssh-over-the-https-port">git 官网</a>给的解决办法，使用 SSH 443端口</p>
+<p>先测试可用性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T -p 443 git@ssh.github.com</span><br></pre></td></tr></table></figure>
+
+<p>编辑 ~&#x2F;.ssh&#x2F;config 文件，如果没有config就新建一个config</p>
+<p>在config中添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">Hostname ssh.github.com</span><br><span class="line">Port 443</span><br></pre></td></tr></table></figure>
+
+<p>在测试联通性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh -T -p 443 git@ssh.github.com</span><br></pre></td></tr></table></figure>
+
+
+
+<p>很多人的误区：即使clash开了全局代理，浏览器能上油管等网站，git默认还是不走代理的，所以会遇到超时等情况。按照以上配置好之后，目前git的各项操作都畅通无阻。</p>
+<h4 id="3-4-没有使用代理工具"><a href="#3-4-没有使用代理工具" class="headerlink" title="3.4 没有使用代理工具"></a>3.4 没有使用代理工具</h4><p>关闭VPN代理工具后，依然无法使用正常使用github。这时网络联通的情况下，可能是因为git工具配置了代理导致的。</p>
+<h5 id="3-4-1-取消git代理设置"><a href="#3-4-1-取消git代理设置" class="headerlink" title="3.4.1 取消git代理设置"></a>3.4.1 取消git代理设置</h5><p>使用命令取消</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global --unset http.proxy</span><br><span class="line">git config --global --unset https.proxy</span><br></pre></td></tr></table></figure>
+
+<p>查看设置<code>git config -l</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config -l</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="四、主题切换问题"><a href="#四、主题切换问题" class="headerlink" title="四、主题切换问题"></a>四、主题切换问题</h3><p>git主题切换的问题，主要是配置根目录_config.yml文件和主题目录__config.yml文件不太匹配导致的。</p>
+]]></content>
+      <categories>
+        <category>软件安装</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+</search>
